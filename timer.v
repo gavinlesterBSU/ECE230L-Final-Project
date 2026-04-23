@@ -8,6 +8,16 @@ module timer(
     output [5:0] state     //6-bits to represent the highest number 59
 );
 
+    moddown moddown1(
+    
 
+    .clk(clk),
+    .rst(rst),
+    .en(en),
+    .load(load),
+    .load_value(load_value),
+    .m(state)
+    
+    );
 
 endmodule
