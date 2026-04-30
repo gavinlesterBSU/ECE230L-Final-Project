@@ -8,6 +8,7 @@ module timer(
     output [5:0] state     //6-bits to represent the highest number 59
 );
 
+    //calls module moddown for timer logic
     moddown moddown1(
     
 
