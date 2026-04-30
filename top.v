@@ -67,6 +67,7 @@ assign decide = mode ? timerState : stopWatchState;
 assign led[8:3] = stopWatchState;
 assign led[15:10] = timerState;
 
+    //calls module stopwatch for stopwatch logic
     stopwatch stopwatch1(
     
     .clk(clk_1Hz),
@@ -79,6 +80,7 @@ assign led[15:10] = timerState;
 //Timer Module Instance
 //Use "clk_1Hz" as clock signal to stopwatch and timer modules
 
+    //calls module timer for timer logic
     timer timer1(
         
         .clk(clk_1Hz),
