@@ -2,7 +2,8 @@ module mod60(
     input clk, rst, en,
     output [5:0] m, Co
     );
-   
+
+    //implements all necessary internal wires
    wire dr;
    wire s1;
    wire s2;
@@ -16,9 +17,11 @@ module mod60(
    wire w4;
    wire w5;
    wire w6;
-   
-    assign dr = (m[0] & m[1] & ~m[2] & m[3] & m[4] & m[5]) | (rst); //MIGHT BE BACKWARDS!!#$@#%&%^y%ethWEROIERHI8WEOFHFHFGYGHQ348O7Y 
-   
+
+    //Reset logic for resetting when the output is 59 or when the reset input is active
+    assign dr = (m[0] & m[1] & ~m[2] & m[3] & m[4] & m[5]) | (rst);
+
+    //calls 6 D flip flops for current state storage
     dff dff1(
         .D(s1),
         .clk(clk),
@@ -67,7 +70,7 @@ module mod60(
         .Q(Co)
      );    
      
-     
+     //calls full adders to account for binary incrimenting
     full_adder add1(
         .A(m[0]),
         .B(en),
