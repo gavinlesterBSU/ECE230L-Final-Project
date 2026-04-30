@@ -6,7 +6,7 @@ module stopwatch(
     output [5:0] state     //6-bits to represent the highest number 59
 );
 
-
+    //calls module 60 for stopwatch logic
     mod60 stop(
     
     .clk(clk),

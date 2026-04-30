@@ -4,16 +4,13 @@ module jkff(
     output NotQ
 );
 
-//    wire w1;
-  //  wire s1;
 
-    
-    //wire w1 is the input of D, wire S1 is the output of Q
-    
+
+    //combinatorial internal logic for JK flip flop
 assign w1 = (J&NotQ) | (~K&Q); 
 
-//assign Q = s1;
-    
+
+//calls D flip flop    
 dff part1(
     .D(w1),
     .clk(clk),

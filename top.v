@@ -58,6 +58,17 @@ wire [5:0] load_value = sw[15:10];      //Set Timer Value (Value to load in time
 wire [5:0] stopWatchState;
 wire [5:0] timerState;
 
+wire stoprst;
+wire stopen;
+wire timerst;
+wire timeen;
+
+
+assign stoprst = btnC;
+assign stopen = mode ? 1'b0 : run;
+assign timerst = btnC;
+assign timeen = mode ? run : 1'b0;
+
 //assign seven segment display wire based on mode
 
 assign decide = mode ? timerState : stopWatchState;
@@ -67,11 +78,12 @@ assign decide = mode ? timerState : stopWatchState;
 assign led[8:3] = stopWatchState;
 assign led[15:10] = timerState;
 
+    //calls module stopwatch for stopwatch logic
     stopwatch stopwatch1(
     
     .clk(clk_1Hz),
-    .rst(btnC),
-    .en(sw[1]),
+    .rst(stoprst),
+    .en(stopen),
     .state(stopWatchState)
     
     );
@@ -79,11 +91,12 @@ assign led[15:10] = timerState;
 //Timer Module Instance
 //Use "clk_1Hz" as clock signal to stopwatch and timer modules
 
+    //calls module timer for timer logic
     timer timer1(
         
         .clk(clk_1Hz),
-        .rst(btnC),
-        .en(sw[1]),
+        .rst(timerst),
+        .en(timeen),
         .load_value(sw[15:10]),
         .load(sw[2]),
         .state(timerState)

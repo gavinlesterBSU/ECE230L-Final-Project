@@ -4,6 +4,7 @@ module tff(
     output NotQ
 );
 
+    //calls JK flip flop for basic logic
 jkff part1(
     .J(D),
     .K(D),
@@ -12,14 +13,4 @@ jkff part1(
     .NotQ(NotQ)
     );
 
-  /*  always @(posedge clk) begin 
-            
-            if (D)
-             Q <= ~Q; 
-             
-        
-    end
-
-    assign NotQ = ~Q;
-*/
 endmodule
